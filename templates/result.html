@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Resultado BFAF</title>
+
+<style>
+body { font-family: Arial; margin: 40px; }
+table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+th, td { border: 1px solid #ccc; padding: 8px; }
+th { background: #f0f0f0; }
+.barreira { background: #ffe5e5; }
+.facilitador { background: #e5ffe5; }
+td.center { text-align: center; }
+</style>
+</head>
+
+<body>
+
+<h2>Resultado do Questionário BFAF</h2>
+
+<p><strong>Escore total:</strong> {{ stats.total_score }}</p>
+<p><strong>Nº de barreiras:</strong> {{ stats.total_barreiras }}</p>
+<p><strong>Nº de facilitadores:</strong> {{ stats.total_facilitadores }}</p>
+
+<hr>
+
+<h3>Barreiras e Facilitadores</h3>
+
+{% set max_rows = [barreiras|length, facilitadores|length]|max %}
+
+{% if max_rows > 0 %}
+<table>
+<tr>
+    <th>Barreiras</th>
+    <th>Facilitadores</th>
+</tr>
+
+{% for i in range(max_rows) %}
+<tr>
+    <td class="barreira">
+        {% if i < barreiras|length %}
+            {{ barreiras[i].classificacao_texto }}
+        {% endif %}
+    </td>
+    <td class="facilitador">
+        {% if i < facilitadores|length %}
+            {{ facilitadores[i].classificacao_texto }}
+        {% endif %}
+    </td>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+<p>Nenhuma barreira ou facilitador identificado.</p>
+{% endif %}
+
+<br>
+<a href="{{ url_for('index') }}">⬅ Voltar</a>
+
+</body>
+</html>
