@@ -35,12 +35,16 @@ QUESTOES = [
         "id": 3,
         "texto": "Por qual motivo você utiliza o medicamento? (resposta aberta)",
         "open_field": True,
-        "requires_judgement": True,
-        "barreira_if": ["INCORRETO"],
-        "facilitador_if": ["CORRETO"],
+        "alternativas": {"A": 1, "B": -1},
+        "labels": {
+            "A": "Correto",
+            "B": "Incorreto"
+        },
+        "barreira_if": ["B"],
+        "facilitador_if": ["A"],
         "classificacao_texto": {
-            "INCORRETO": "Uso do medicamento sem compreensão do benefício terapêutico",
-            "CORRETO": "Reconhecimento do benefício terapêutico"
+            "B": "Falta de conhecimento sobre a condição de saúde",
+            "A": "Conhecimento sobre a farmacoterapia"
         }
     },
     {
@@ -85,14 +89,18 @@ QUESTOES = [
     },
     {
         "id": 7,
-        "texto": "Quantos anos você estudou? Sabe ler e escrever?",
+        "texto": "Sabe ler e escrever? Quantos anos você estudou?",
         "open_field": True,
-        "requires_judgement": True,
-        "barreira_if": ["ANALFABETO"],
-        "facilitador_if": ["ALFABETIZADO"],
+        "alternativas": {"A": -1, "B": 1},
+        "labels": {
+            "A": "Alfabetizado",
+            "B": "Analfabeto"
+        },
+        "barreira_if": ["B"],
+        "facilitador_if": ["A"],
         "classificacao_texto": {
-            "ANALFABETO": "Baixa escolaridade / analfabetismo",
-            "ALFABETIZADO": "Capacidade de leitura e escrita"
+            "B": "Baixa escolaridade / analfabetismo",
+            "A": "Capacidade de leitura e escrita"
         }
     },
     {
