@@ -72,38 +72,29 @@ def questions(patient_id):
             qid = q["id"]
             alternativa = request.form.get(f"q_{qid}_alt")
             open_text = request.form.get(f"q_{qid}_open", "").strip()
-            judgement = request.form.get(f"q_{qid}_judgement", "").upper().strip()
 
-            # Cálculo do valor
-            if q.get("open_field") and q.get("requires_judgement"):
-                if judgement in q.get("facilitador_if", []):
-                    valor = 1
-                elif judgement in q.get("barreira_if", []):
-                    valor = -1
-                else:
-                    valor = 0
-            else:
-                valor = q.get("alternativas", {}).get(alternativa, 0)
+            # --- TRAVA NA RAIZ (PYTHON) PARA A QUESTÃO 8 ---
+            if qid == 8 and open_text:
+                try:
+                    valor_num = int(open_text)
+                    if valor_num > 110:
+                        open_text = "110" # Se for maior, o Python força para 110
+                except ValueError:
+                    open_text = "0" # Se não for número, o Python limpa
+            # -----------------------------------------------
 
-            # Identificação de Barreiras/Facilitadores
-            is_barreira = int(alternativa in q.get("barreira_if", []) or judgement in q.get("barreira_if", []))
-            is_facilitador = int(alternativa in q.get("facilitador_if", []) or judgement in q.get("facilitador_if", []))
-
-            # Texto de classificação
-            classificacao_texto = ""
-            mapa = q.get("classificacao_texto", {})
-            if alternativa in mapa:
-                classificacao_texto = mapa[alternativa]
-            elif judgement in mapa:
-                classificacao_texto = mapa[judgement]
-
+            valor = q.get("alternativas", {}).get(alternativa, 0)
+            is_barreira = int(alternativa in q.get("barreira_if", []))
+            is_facilitador = int(alternativa in q.get("facilitador_if", []))
+            
+            # Salvando no banco (limpo, sem judgement)
             db.save_response(
                 patient_id, qid, alternativa or "", valor, 
-                open_text, judgement, is_barreira, is_facilitador, classificacao_texto
+                open_text, "", is_barreira, is_facilitador, 
+                q.get("classificacao_texto", {}).get(alternativa, "")
             )
 
         return redirect(url_for("result", patient_id=patient_id))
-
     return render_template("questions.html", questoes=QUESTOES, patient_id=patient_id)
 
 # ======================================================

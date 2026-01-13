@@ -93,8 +93,8 @@ QUESTOES = [
         "open_field": True,
         "alternativas": {"A": -1, "B": 1},
         "labels": {
-            "A": "Alfabetizado",
-            "B": "Analfabeto"
+            "A": "Alfabetizado (pessoa com 15 anos ou mais que possui menos de quatro anos de estudo, ou que declara não saber ler e escrever)",
+            "B": "Analfabeto (pessoa com 15 anos ou mais que declara saber ler e escrever e que possui quatro anos ou mais de estudo.)"
         },
         "barreira_if": ["B"],
         "facilitador_if": ["A"],
@@ -106,11 +106,11 @@ QUESTOES = [
     {
         "id": 8,
         "texto": "Qual a sua idade?",
-        "open_field": True,
-        "alternativas": {"A": -1, "B": 1},
+        "alternativas": {"A": -1, "B": 1, "C": 0},
         "labels": {
             "A": "Paciente com idade inferior a 60 anos",
-            "B": "Paciente com idade igual ou superior a 60 anos"
+            "B": "Paciente com idade igual ou superior a 60 anos e menor que 80 anos",
+            "C": "Paciente com idade igual ou superior a 80 anos"
         },
         "barreira_if": ["A"],
         "facilitador_if": ["B"],
@@ -141,7 +141,6 @@ QUESTOES = [
             "A": "Sobrecarga de cuidado familiar"
         }
     },
-
     {
         "id": 11,
         "texto": "Nos últimos 7 dias, você deixou de tomar alguma dose do medicamento?",
@@ -162,7 +161,6 @@ QUESTOES = [
             "E": "Excelente adesão ao tratamento"
         }
     },
-
     {
         "id": 12,
         "texto": "Você tem conhecimento sobre a gravidade da sua doença?",
@@ -179,7 +177,6 @@ QUESTOES = [
             "C": "Consciência sobre a gravidade da doença"
         }
     },
-
     {
         "id": 13,
         "texto": "Nos últimos 7 dias, você se sentiu interessado em cuidar da sua doença?",
@@ -196,7 +193,6 @@ QUESTOES = [
             "C": "Engajamento no autocuidado"
         }
     },
-
     {
         "id": 14,
         "texto": "Como tem sido a sua aceitação com relação à sua condição de saúde?",
@@ -214,7 +210,6 @@ QUESTOES = [
             "C": "Aceitação da condição de saúde"
         }
     },
-
     {
         "id": 15,
         "texto": "Em situações fora da rotina, você costuma utilizar o medicamento?",
@@ -230,7 +225,6 @@ QUESTOES = [
             "A": "Manutenção do tratamento fora da rotina"
         }
     },
-
     {
         "id": 16,
         "texto": "Quando você se sente melhor, costuma parar de utilizar o medicamento?",
@@ -247,7 +241,6 @@ QUESTOES = [
             "B": "Continuidade do tratamento"
         }
     },
-
     {
         "id": 17,
         "texto": "Você precisou comprar o medicamento nos últimos 30 dias?",
@@ -264,7 +257,6 @@ QUESTOES = [
             "B": "Acesso gratuito ao medicamento"
         }
     },
-
     {
         "id": 18,
         "texto": "Você considera alto o custo com o medicamento?",
@@ -281,7 +273,6 @@ QUESTOES = [
             "C": "Custo acessível do medicamento"
         }
     },
-
     {
         "id": 19,
         "texto": "Qual a sua opinião em relação à quantidade de medicamentos que você toma?",
@@ -299,7 +290,6 @@ QUESTOES = [
             "B": "Percepção adequada do tratamento"
         }
     },
-
     {
         "id": 20,
         "texto": "Você tem dificuldade ou desconforto ao tomar ou aplicar o medicamento?",
@@ -314,7 +304,6 @@ QUESTOES = [
             "B": "Dificuldade na administração do medicamento"
         }
     },
-
     {
         "id": 21,
         "texto": "O que você acha que o medicamento faz para a sua saúde?",
@@ -331,7 +320,6 @@ QUESTOES = [
             "A": "Percepção positiva do medicamento"
         }
     },
-
     {
         "id": 22,
         "texto": "Você considera importante utilizar o medicamento para controlar o seu problema de saúde?",
@@ -348,7 +336,6 @@ QUESTOES = [
             "A": "Valorização do tratamento medicamentoso"
         }
     },
-
     {
         "id": 23,
         "texto": "Utilizar o medicamento atrapalha as suas atividades do dia a dia?",
@@ -364,7 +351,6 @@ QUESTOES = [
             "B": "Boa adaptação do medicamento à rotina"
         }
     },
-
     {
         "id": 24,
         "texto": "Você esteve de acordo com o seu médico quando ele te receitou o medicamento?",
@@ -381,7 +367,6 @@ QUESTOES = [
             "A": "Concordância com a prescrição médica"
         }
     },
-
     {
         "id": 25,
         "texto": "Você está satisfeito com o atendimento recebido pelo profissional de saúde que te receitou esse medicamento?",
@@ -397,7 +382,6 @@ QUESTOES = [
             "A": "Satisfação com o atendimento em saúde"
         }
     },
-
     {
         "id": 26,
         "texto": "Você considera que recebeu todas as informações necessárias sobre o medicamento pelo profissional de saúde?",
@@ -414,7 +398,6 @@ QUESTOES = [
             "A": "Informação adequada sobre o medicamento"
         }
     },
-
     {
         "id": 27,
         "texto": "Você confia no profissional de saúde que te receitou o medicamento?",
@@ -431,7 +414,6 @@ QUESTOES = [
             "A": "Confiança no profissional de saúde"
         }
     },
-
     {
         "id": 28,
         "texto": "O profissional de saúde que te receitou te motiva a utilizar esse medicamento?",
@@ -447,7 +429,6 @@ QUESTOES = [
             "A": "Motivação fornecida pelo profissional de saúde"
         }
     },
-
     {
         "id": 29,
         "texto": "Você considera que está acostumado a utilizar o medicamento?",
